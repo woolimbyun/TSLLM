@@ -1,0 +1,81 @@
+version: '3'
+
+services:
+
+  frontend:
+    build: ./frontend
+    command: sh -c "npm install && npm run build && npm start"
+    container_name: frontend
+    ports:
+      - 3000:3000
+    volumes:
+      - ./frontend:/frontend
+      - build_folder:/frontend/build
+      - ./frontend/node_modules/:/frontend/node_modules
+    stdin_open: true
+    tty: true
+    networks:
+      - tsllm
+
+  spring-server: 
+    container_name: spring-server
+    build:
+      context: ./springServer/backend
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - ./springServer/backend:/springServer/backend
+      - static_volume:/springServer/backend/staticfiles
+    networks:
+      - tsllm
+    depends_on:
+      - mysql
+      - redis
+
+  nginx:
+    container_name: nginx
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
+    depends_on:
+     - spring-server
+     - frontend
+    volumes:
+      - static_volume:/spring-server/staticfiles
+      - media_volume:/spring-server/mediafiles
+      - build_folder:/var/www/frontend
+    networks:
+      - tsllm
+
+  mysql:
+    image: mysql:8.0  
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}  
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_data:/var/lib/mysql 
+    networks:
+      - tsllm
+
+  redis:
+    image: redis
+    container_name: redis
+    ports:
+      - 6379:6379
+    networks:
+      - tsllm
+
+networks:
+  tsllm:
+    driver: bridge
+
+volumes:
+  static_volume: null
+  media_volume: null
+  build_folder: null
+  mysql_data: null  # Add a volume for MySQL data

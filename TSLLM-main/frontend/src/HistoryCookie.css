@@ -1,0 +1,47 @@
+.ledger {
+  width: 100%;
+  margin: 0px 20px 20px 0px auto;
+  box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.1), 0 0.1rem 0.1rem rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+  border: 1px solid #E1E3E7;
+  background: #FFFFFF;
+  overflow-x: auto;
+
+}
+
+.simple-striped-desktop {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  text-align: center;
+  background: #F9F9FA;
+  font-weight: bold;
+  padding: 10px 0; 
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  text-align: center;
+  padding: 20px 0;
+  align-items: center;
+  border-top: 1px solid #e1e3e7;
+  font-size: 0.875rem;
+}
+
+
+.row:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+
+.row:hover {
+  background-color: #f0f0f0;
+}
+
+
+@media (max-width: 768px) {
+  .row,
+  .simple-striped-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    font-size: 0.75rem;
+  }
+}

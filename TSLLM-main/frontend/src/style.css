@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.chat-history {
+  position: relative;
+  width: 100%;
+}
+
+
+
+.chat-history button {
+  background-color: #a0d1f9; /* 배경색 변경 */
+  color: #303441; /* 텍스트 색상 변경 */
+  border: 1px solid #2196f3; /* 테두리 추가 및 색상 변경 */
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 10px; /* 아래쪽 여백 추가 */
+  width: 100%; /* 버튼을 화면에 맞춤 */
+  font-size: 15px; /* 폰트 사이즈를 .header의 폰트 사이즈에 맞춤 */
+  height: 40px; /* 세로 크기를 .header의 세로 크기에 맞춤 */
+}
+
+
+
+.chat_wrap {
+  position: relative;
+  width: 100%;
+  overflow-y: hidden;
+  height: 100%;
+}
+
+.chat_wrap .header {
+  position: relative;
+  font-size: 15px;
+  padding: 10px;
+  color: #fcfcfc;
+  background-color: #2196f3;
+  border: 1px solid #2196f3;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.chat_wrap .chat {
+  position: relative;
+  overflow: auto;
+  /* padding-bottom: 60px; */
+  /* height: 100%; */
+  /* 100% - 인풋 창 높이 - 헤더 높이 */
+  height: calc(100% - 104px - 65.5px);
+  /* max-height: calc(100% - 104px - 65.5px); */
+}
+
+.chat_wrap .chat ul {
+  width: 100%;
+  list-style: none;
+}
+
+.chat_wrap .chat ul li {
+  width: 100%;
+}
+
+.chat_wrap .chat ul li.left {
+  text-align: left;
+  /* 줄바꿈처리 */
+  white-space: pre-line;
+}
+
+.chat_wrap .chat ul li.right {
+  text-align: right;
+  /* 줄바꿈처리 */
+  white-space: pre-line;
+}
+
+.chat_wrap .chat ul li > div {
+  font-size: 13px;
+}
+
+.chat_wrap .chat ul li > div.sender {
+  margin: 10px 20px 0 20px;
+  font-weight: bold;
+}
+
+.chat_wrap .chat ul li > div.message {
+  display: inline-block;
+  word-break: break-word;
+  margin: 5px 20px;
+  max-width: 75%;
+  border: 1px solid #888;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+  color: #555;
+  text-align: left;
+}
+
+.chat_wrap .input-div {
+  position: relative;
+  /* bottom: 10%; */
+  /* transform: translateX(-50%); */
+  width: 100%;
+  /* max-width: 600px; */
+  height: max-content;
+  padding-left: 0px;
+  background-color: #fff;
+  display: flex;
+  border-top: 2px solid #a0d1f9;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-form {
+  padding: 20px;
+  /* height: 30px; */
+  width: 100%;
+}
+
+.custom-textarea {
+  flex: 1;
+  height: 30pt;
+  width: 100%;
+  display: flex;
+  border: 1px solid #2196f3;
+  background-color: #a0d1f9;
+  border-radius: 20px;
+  padding: 10px 20px;
+  resize: none;
+  font-size: 16px;
+}
+
+.chat_wrap .input-div button {
+  background-color: #ffd400;
+  color: #303441;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.format {
+  display: none;
+}
